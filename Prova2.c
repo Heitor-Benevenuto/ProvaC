@@ -30,7 +30,7 @@ typedef struct {
     TipoDado tipo_dado; 
 } Leitura;
 
-// Converte data e hora para timestamp epoch
+
 long long datetime_to_epoch(int day, int month, int year, int hour, int min, int sec) {
     struct tm t = {0};
     t.tm_mday = day;
@@ -43,7 +43,7 @@ long long datetime_to_epoch(int day, int month, int year, int hour, int min, int
     return (long long)mktime(&t);
 }
 
-// Identifica o tipo do valor lido como string
+
 TipoDado identificar_tipo_do_valor_string(const char *valor_str) {
     if (strcmp(valor_str, "true") == 0 || strcmp(valor_str, "false") == 0) {
         return BOOLEANO;
@@ -95,7 +95,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // Conta o nÃºmero de linhas (leituras)
+    
     int count = 0;
     char temp_line[MAX_LINE_SIZE];
     while (fgets(temp_line, sizeof(temp_line), file)) {
@@ -103,7 +103,7 @@ int main(int argc, char *argv[]) {
     }
     rewind(file);
 
-    // Aloca memÃ³ria
+    
     Leitura *readings = (Leitura *)malloc(count * sizeof(Leitura));
     if (readings == NULL) {
         perror("Erro ao alocar memÃ³ria para leituras");
@@ -111,7 +111,7 @@ int main(int argc, char *argv[]) {
         return 1;
     }
 
-    // LÃª todas as linhas do arquivo
+    
     for (int i = 0; i < count; i++) {
         char current_id_sensor[MAX_SENSOR_ID_SIZE];
         char valor_str[MAX_LINE_SIZE]; 
@@ -146,7 +146,7 @@ int main(int argc, char *argv[]) {
     }
     fclose(file);
 
-    // Busca binÃ¡ria adaptada para ordem DECRESCENTE
+    
     int left = 0, right = count - 1;
     int closest_index = -1;
 
@@ -169,7 +169,7 @@ int main(int argc, char *argv[]) {
         }
     }
 
-    // Exibe o resultado
+    
     if (closest_index != -1) {
         printf("Leitura mais prÃ³xima para o sensor '%s' no instante %02d/%02d/%04d %02d:%02d:%02d (epoch: %lld):\n",
                sensor_nome, day, month, year, hour, min, sec, target_timestamp);
