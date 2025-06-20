@@ -21,7 +21,7 @@ typedef struct {
     TipoDado tipo_dado;
 } SensorConfig;
 
-// Alterado para refletir os novos nomes de tipo
+
 TipoDado string_to_tipodado(const char *tipo_str) {
     if (strcmp(tipo_str, "CONJ_Z") == 0) return INTEIRO;
     if (strcmp(tipo_str, "BINARIO") == 0) return BOOLEANO;
