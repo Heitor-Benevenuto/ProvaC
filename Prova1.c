@@ -38,7 +38,7 @@ typedef struct {
     int capacidade_leituras; 
 } SensorInfo;
 
-// OrdenaÃ§Ã£o decrescente de timestamp
+
 int comparar_leituras(const void *a, const void *b) {
     Leitura *la = (Leitura *)a;
     Leitura *lb = (Leitura *)b;
